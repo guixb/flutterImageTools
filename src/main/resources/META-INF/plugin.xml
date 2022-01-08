@@ -1,0 +1,49 @@
+<idea-plugin>
+    <id>org.example.flutterImageTools</id>
+    <name>Flutter Image Tool</name>
+    <version>1.0.0</version>
+    <vendor email="g.xiangbo@gmail.com" url="git@gitee.com:denzel_gui/flutter-image-tools.git">gxb</vendor>
+
+    <description>
+        <![CDATA[
+            1. find .yaml file<br>2. open yaml file Right Menu or yaml file editor<br>3. choice "Sync Assets"<br>4. view project root dir "sync_assets.properties"</br>5. properties change need "Sync Asset"
+        ]]>
+    </description>
+
+    <change-notes>
+        <![CDATA[
+          <li><b>1.0.0</b> Release 2021.12.</li>
+        ]]>
+    </change-notes>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+<!--    <depends>org.jetbrains.android</depends>-->
+<!--    <depends>com.intellij.modules.androidstudio</depends>-->
+
+
+    <depends>org.jetbrains.plugins.yaml</depends>
+
+    <actions>
+        <action id="AssetsSyncAction"
+                class="org.denzel.plugin.AssetsSyncAction"
+                text="Sync Assets"
+                description="build sync assets,generate assets dart file."
+                icon="SdkIcons.Sdk_icon_1">
+            <keyboard-shortcut keymap="$default" first-keystroke="control alt s"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last" />
+        </action>
+        <action id="FileAssetsSyncAction"
+                class="org.denzel.plugin.FileAssetsSyncAction"
+                text="Sync Assets"
+                description="build sync assets,generate assets dart file."
+                icon="SdkIcons.Sdk_icon_1">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last" />
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <typedHandler implementation="ImageTypedHandler"/>
+    </extensions>
+</idea-plugin>

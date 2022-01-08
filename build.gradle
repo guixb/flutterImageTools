@@ -1,0 +1,41 @@
+plugins {
+//    id 'java'
+    id 'org.jetbrains.intellij' version '1.2.0'
+}
+
+group 'org.denzel.plugin'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version = '201.8743.12'
+    type = 'IC'
+    plugins = ['yaml']
+}
+runIde {
+    // Absolute path to installed target 3.5 Android Studio to use as IDE Development Instance
+    // The "Contents" directory is macOS specific.
+    ideDir = file('/Applications/Android Studio.app/Contents')
+}
+publishPlugin {
+//    channels = 'Stable'
+    token = 'perm:YTQ5NTU5NjAwMQ==.OTItNTI5OA==.CuhQhTyegwfUzwNWM3YoMlUTPzwM9G'
+}
+patchPluginXml {
+    sinceBuild = '191'
+    untilBuild = "213.*"
+    changeNotes = """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+}
